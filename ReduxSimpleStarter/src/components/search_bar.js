@@ -37,7 +37,7 @@ class SearchBar extends Component {
     term will be the property that we update state on whenever
     the user types something in
     */
-    this.state = {term: ''};
+    this.state = {term: 'starting value'};
   }
 
   render() { // must have this function
@@ -49,11 +49,17 @@ class SearchBar extends Component {
     always manipulate state with this.setState
 
     always wrap variables in {}
+
+    input is now a controlled component, whose value changes
+    when the state changes
     */
     //return <input onChange={this.onInputChange} />;
     return (
       <div>
-        <input onChange={event => this.setState({term: event.target.value})} />
+        <input
+          value={this.state.term}
+          onChange={event => this.setState({term: event.target.value})}
+        />
       </div>
     );
   }
