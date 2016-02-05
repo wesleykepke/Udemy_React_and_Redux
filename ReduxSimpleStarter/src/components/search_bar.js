@@ -37,7 +37,7 @@ class SearchBar extends Component {
     term will be the property that we update state on whenever
     the user types something in
     */
-    this.state = {term: 'starting value'};
+    this.state = {term: ''};
   }
 
   render() { // must have this function
