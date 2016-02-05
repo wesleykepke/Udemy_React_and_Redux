@@ -25,8 +25,24 @@ must always have a render method and return some JSX
 */
 class SearchBar extends Component {
   render() { // must have this function
-    return <input />;
+
+    /*
+    create a new input element and pass it a prop called
+    onChange, which has value this.onInputChange
+    */
+    //return <input onChange={this.onInputChange} />;
+    return <input onChange={event => console.log(event.target.value)} />;
   }
+
+  /*
+  this is an event handler
+
+  name convention: <handle/on><name of element for event><event type>
+  onInputChange(event) {
+    // event: describes stuff about the event that changed
+    console.log(event.target.value);
+  }
+  */
 }
 
 /*
