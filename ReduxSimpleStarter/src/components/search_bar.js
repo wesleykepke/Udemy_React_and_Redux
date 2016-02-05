@@ -24,6 +24,19 @@ extending react.component makes it a class component, where we
 must always have a render method and return some JSX
 */
 class SearchBar extends Component {
+  /*
+  initialize state in a class component
+  */
+  constructor(props) {
+    super(props);
+
+    /*
+    term will be the property that we update state on whenever
+    the user types something in 
+    */
+    this.state = {term: ''};
+  }
+
   render() { // must have this function
 
     /*
