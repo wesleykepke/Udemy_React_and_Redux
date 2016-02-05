@@ -31,8 +31,11 @@ class SearchBar extends Component {
     super(props);
 
     /*
+    state is really just a JS object that exists in any class
+    component
+
     term will be the property that we update state on whenever
-    the user types something in 
+    the user types something in
     */
     this.state = {term: ''};
   }
@@ -42,9 +45,17 @@ class SearchBar extends Component {
     /*
     create a new input element and pass it a prop called
     onChange, which has value this.onInputChange
+
+    always manipulate state with this.setState
+
+    always wrap variables in {}
     */
     //return <input onChange={this.onInputChange} />;
-    return <input onChange={event => console.log(event.target.value)} />;
+    return (
+      <div>
+        <input onChange={event => this.setState({term: event.target.value})} />
+      </div>
+    );
   }
 
   /*
