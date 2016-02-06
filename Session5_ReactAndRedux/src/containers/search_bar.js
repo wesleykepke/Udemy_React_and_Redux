@@ -28,13 +28,18 @@ export default class SearchBar extends Component {
   event.target.value is also plain, vanilla JS.
   */
   onInputChange(event) {
-    console.log(event.target.value);
     this.setState({ term: event.target.value });
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault(); // tell browser not to submit the form
+
+    // we need to go and fetch weather data 
   }
 
   render() {
     return (
-      <form className="input-group">
+      <form onSubmit={this.onFormSubmit}className="input-group">
         <input
           placeholder="Get a five-day corecast in your favorite cities"
           className="form-control"
