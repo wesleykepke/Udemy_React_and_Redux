@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions/index';
 
 class PostsIndex extends Component {
 	/*
@@ -6,10 +8,10 @@ class PostsIndex extends Component {
 	whenever a component is about to rendered to the DOM for the first time.
 
 	This essentially means that whenever out posts component is about the mount,
-	we should have the data fetched for us. 
+	we should have the data fetched for us.
 	*/
 	componentWillMount() {
-		console.log("This would be a good time to call an action creator to fetch posts");
+		this.props.fetchPosts();
 	}
 
 	render() {
@@ -19,4 +21,5 @@ class PostsIndex extends Component {
 	}
 }
 
-export default PostsIndex;
+// First parameter is null because we have not defined mapStateToProps (yet)
+export default connect(null, {fetchPosts})(PostsIndex);
