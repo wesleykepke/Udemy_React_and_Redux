@@ -19,6 +19,9 @@ class PostsNew extends Component {
 				<div className="form-group">
 					<label>Title</label>
 					<input type="text" className="form-control" {...title} />
+					<div className="text-help">
+						{title.touched ? title.error : ''}
+					</div>
 				</div>
 
 				<div className="form-group">
@@ -38,6 +41,19 @@ class PostsNew extends Component {
 }
 
 /*
+Called with the values from the form.
+*/
+function validate(values) {
+	const errors = {};
+
+	if (!values.title) {
+		errors.title = 'Enter a username';
+	}
+
+	return errors;
+}
+
+/*
 reduxForms injects some helpers into this.props (like redux connect)
 
 connect: first argument is mapStateToProps, second is mapDispatchToProps
@@ -46,5 +62,6 @@ reduxForm: 1st is form config, 2nd is mapStateToProps, 3rd is mapDispatchToProps
 */
 export default reduxForm({
 	form: 'PostsNew', // needs to be a unique token
-	fields: ['title', 'categories', 'content']
+	fields: ['title', 'categories', 'content'],
+	validate
 }, null, { createPost })(PostsNew);
